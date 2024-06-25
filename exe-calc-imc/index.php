@@ -37,10 +37,32 @@
  
         <?php 
 
-            $calc = $altura * $altura ;
-            $tot= $peso / $calc ;
-            echo  "O resultado do seu IMC é $tot";
+            $calc = $altura * $altura;
+            $tot = $peso / $calc;
+            $tot = number_format($tot, 2, '.', '');
 
+            echo "O resultado do seu IMC é $tot<br>";
+
+            switch (true) {
+                case ($tot < 18.5):
+                    echo "Magreza";
+                    break;
+                case ($tot >= 18.5 && $tot < 24.9):
+                    echo "Normal";
+                    break;
+                case ($tot >= 25 && $tot < 29.9):
+                    echo "Sobrepeso I";
+                    break;
+                case ($tot >= 30 && $tot < 39.9):
+                    echo "Obesidade II";
+                    break;
+                case ($tot >= 40):
+                    echo "Obesidade grave III";
+                    break;
+                default:
+                    echo "Valor inválido";
+                    break;
+            }
         ?>
 
     </main>
